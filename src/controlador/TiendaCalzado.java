@@ -25,10 +25,11 @@ public class TiendaCalzado {
     }
 
     //Logica del negocio
+
     //El ingreso puede ser Calzado de mujer, hombre o deportivo y  no puede estar duplicado
     public int buscarCalzado(String codigo){     //cod 123sfsadf 123
-        for(int i=0;i< tiendaCalzado.size();i++){
-            if(tiendaCalzado.get(i).getProducto().getCodigo().compareToIgnoreCase(codigo)==0){
+        for(int i=0;i< tiendaCalzado.size();i++){ //recorrer la colección
+            if(tiendaCalzado.get(i).getProducto().getCodigo().compareToIgnoreCase(codigo)==0){//defini una condición
                 //encontro el objeto
                 return i; //0
             }
@@ -65,24 +66,92 @@ public class TiendaCalzado {
         }
     }
 
+    //{objeto1,objeto2,objeto3,objeto4}
+    //{   0   ,   1   ,   2   ,   3   }
+    //{   M   ,   H   ,   D   ,   M   }
+    //{  123  , asv2  , fsdf3 , re534 }
+
     public String calzadosMujer(){
-        return "los calzados de mujer son...";
+        String mensaje ="";
+        Mujer mujer = null;
+
+        for(int i=0;i<tiendaCalzado.size();i++){ //Recorrer la colección
+            if(tiendaCalzado.get(i) instanceof Mujer) { //definir una condición
+                mujer = (Mujer) tiendaCalzado.get(i);
+
+                mensaje = mensaje + "\n Dia venta: "+mujer.getDiaVenta()+ " , altura de taco: "+
+                        mujer.getAlturaTaco()+ " y descuento: $"+mujer.descuento();
+            }
+        }
+        return mensaje;
     }
 
-    public String valorVenta(){
-        return "el valor de venta se viene...";
+    public String valorVenta(String codigo){
+        for(int i=0;i<tiendaCalzado.size();i++) { //Recorrer la colección
+            //    lista     .objeto.atributo.subatributo
+            if(tiendaCalzado.get(i).getProducto().getCodigo().compareToIgnoreCase(codigo)==0){ //
+                //existe el calzado
+                return "el valor de venta del calzado es: $"+tiendaCalzado.get(i).valorVenta() +
+                        " y el nro de calzado es: "+tiendaCalzado.get(i).getNumero();
+            }
+        }
+        return "el codigo "+codigo + " no se encuentra asociado a ningun calzado. ¿Desea ingresarlo?";
     }
 
     public String calzadosTop(){
-        return "los calzados top son";
+        int suma=0;
+
+        for(int i=0;i<tiendaCalzado.size();i++) { //Recorrer la colección
+            if(tiendaCalzado.get(i).valorVenta()>80000){
+                //es un calzado top
+                suma = suma + tiendaCalzado.get(i).getProducto().getStock();
+            }
+        }
+        return "tienes "+suma + " calzados top (precio mayor a $80.000)";
     }
 
+
+    //{objeto1,objeto2,objeto3,objeto4}
+    //{   0   ,   1   ,   2   ,   3   }
+    //{   M   ,   H   ,   D   ,   M   }
+    //{  123  , asv2  , fsdf3 , re534 }
+
     public int totalImpuestosEspecificos(){
-        return 0;
+        int totalImpuestos = 0;
+        Mujer mujer = null;
+        Hombre hombre = null;
+        for(int i=0;i<tiendaCalzado.size();i++) { //Recorrer la colección
+            if(tiendaCalzado.get(i) instanceof Mujer){
+                //es un objeto de dicha clase
+                mujer = (Mujer) tiendaCalzado.get(i);
+                totalImpuestos = totalImpuestos + (mujer.impuestoEspecifico() * mujer.getProducto().getStock());
+            }else if(tiendaCalzado.get(i) instanceof Hombre){
+                hombre = (Hombre) tiendaCalzado.get(i);
+                totalImpuestos = totalImpuestos + (hombre.impuestoEspecifico() * hombre.getProducto().getStock());
+            }
+        }
+            return totalImpuestos;
     }
 
     public int totalDescuentos(){
-        return 0;
+        int totalDescuentos = 0;
+        Mujer mujer = null;
+        Hombre hombre = null;
+        for(int i=0;i<tiendaCalzado.size();i++) { //Recorrer la colección
+            if(tiendaCalzado.get(i) instanceof Mujer){
+                //es un objeto de dicha clase
+                mujer = (Mujer) tiendaCalzado.get(i);
+                totalDescuentos = totalDescuentos + (mujer.descuento() * mujer.getProducto().getStock());
+            }else if(tiendaCalzado.get(i) instanceof Hombre){
+                hombre = (Hombre) tiendaCalzado.get(i);
+                totalDescuentos = totalDescuentos + (hombre.descuento() * hombre.getProducto().getStock());
+            }
+        }
+        return totalDescuentos;
     }
+
+
+
+
 
 }
