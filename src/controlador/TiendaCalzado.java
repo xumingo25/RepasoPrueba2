@@ -83,6 +83,10 @@ public class TiendaCalzado {
                         mujer.getAlturaTaco()+ " y descuento: $"+mujer.descuento();
             }
         }
+        if(mensaje.equalsIgnoreCase("")){
+            mensaje = "No hay calzados de mujer registrados. favor ingrese calzado";
+        }
+
         return mensaje;
     }
 
