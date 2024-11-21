@@ -1,51 +1,63 @@
 package vista;
 
 import controlador.TiendaCalzado;
-import modelo.*;
 
 import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) {
-        Producto prod = new Producto("abc123", 10, 10000);
-        Producto prod2 = new Producto("abc1231", 10, 10000);
-        Producto prod3 = new Producto("abc1232", 10, 10000);
-        Producto prod4 = new Producto("abc12322", 10, 10000);
-
-
-        Deportivo deportivo = new Deportivo(prod, "Semana", 44, "Futbol", "Cuero");
-        Mujer mujer = new Mujer(prod2, "Semana", 44, "Rojo", 12);
-        Hombre hombre = new Hombre(prod3, "Semana", 44, "Rojo");
-        /*System.out.println("El valor venta del calzado deportivo es: $" + deportivo.valorVenta());
-        System.out.println("El IVA del calzado deportivo es: $" + deportivo.impuestoIva());
-        System.out.println("Impuesto especifico Calzado Mujer: $" + mujer.impuestoEspecifico());
-        System.out.println("El Impuesto Material del calzado deportivo es: $" + deportivo.impuestoMaterial());
-        System.out.println("El descuento calzado mujer es: $"+mujer.descuento());
-        System.out.println("El descuento calzado hombre es: $"+hombre.descuento());
-        System.out.println("Valor a pagar Calzado Mujer: "+mujer.valorACancelar());
-        System.out.println("Valor a pagar Calzado Hombre: "+hombre.valorACancelar());
-        System.out.println("Valor a pagar Calzado deportivo: "+deportivo.valorACancelar());*/
-        Mujer calzadoMujer2 = new Mujer(prod4, "Fin de semana", 44, "Rojo", 12);
+        int opcion;
+        String codigoCalzado;
 
         TiendaCalzado tiendaCalzado = new TiendaCalzado(new ArrayList<>()); //colección que almacena 0 calzados
 
-        System.out.println("cantidad de calzados: "+ tiendaCalzado.getTiendaCalzado().size());
+        do{
+            opcion = menu();
 
-        tiendaCalzado.ingresarCalzadoDeportivo(deportivo);
+            switch (opcion){
+                case 1:
+                    System.out.println("Opción 1");
+                    break;
+                case 2:
+                    System.out.println(tiendaCalzado.calzadosMujer());
+                    break;
+                case 3:
+                    String codigoSolicitado = pideCodigo();
+                    System.out.println(tiendaCalzado.valorVenta(codigoSolicitado));
+                    break;
+                case 4:
+                    System.out.println(tiendaCalzado.calzadosTop());
+                    break;
+                case 5:
+                    System.out.println("el total de impuestos especificos si se vendieran todos los calzados es: $"+tiendaCalzado.totalImpuestosEspecificos());
+                    break;
+                case 6:
+                    System.out.println("el total de descuentos si se vendieran todos los calzados es: $"+tiendaCalzado.totalDescuentos());
+                    break;
+            }
 
-        System.out.println("cantidad de calzados: "+ tiendaCalzado.getTiendaCalzado().size());
-
-        tiendaCalzado.ingresarCalzadoHombre(hombre);
-
-        System.out.println("cantidad de calzados: "+ tiendaCalzado.getTiendaCalzado().size());
-
-        tiendaCalzado.ingresarCalzadoMujer(mujer);
-
-        System.out.println("cantidad de calzados: "+ tiendaCalzado.getTiendaCalzado().size());
-
-        tiendaCalzado.ingresarCalzadoMujer(calzadoMujer2);
-
-        System.out.println(tiendaCalzado.calzadosMujer());
-
+        }while(opcion!=7);
     }
+
+    public static String pideCodigo(){
+        System.out.println("Favor ingrese codigo de calzado...");
+        return Leer.dato();
+    }
+
+    public static int menu(){
+        System.out.println("---- Sistema tienda de calzados ----");
+        System.out.println("------------------------------------");
+        System.out.println("1.\tIngresar Calzado (Deportivo, Formal de hombre o Mujer)");
+        System.out.println("2.\tMostrar sólo los calzado de mujer");
+        System.out.println("3.\tValor Venta calzado ");
+        System.out.println("4.\tCalzados top (Valor venta mayor a $80.000)");
+        System.out.println("5.\tTotal Impuesto Especificos de la tienda");
+        System.out.println("6.\tTotal descuentos de la tienda");
+        System.out.println("7.\tSalir.");
+        System.out.println("------------------------------------");
+        System.out.println("Favor ingrese una opción para continuar...");
+        return Leer.datoInt();
+    }
+
+
 }
