@@ -1,6 +1,10 @@
 package vista;
 
 import controlador.TiendaCalzado;
+import modelo.Deportivo;
+import modelo.Hombre;
+import modelo.Mujer;
+import modelo.Producto;
 
 import java.util.ArrayList;
 
@@ -16,7 +20,61 @@ public class App {
 
             switch (opcion){
                 case 1:
-                    System.out.println("Opción 1");
+                    codigoCalzado = pideCodigo(); //codigo
+                    if(tiendaCalzado.buscarCalzado(codigoCalzado)==-1){
+                        //no existe, solicito la info del calzado
+                        System.out.println("¿Valor base?"); int valorBase = Leer.datoInt();
+                        System.out.println("¿Stock?"); int stock = Leer.datoInt();
+                        System.out.println("¿Nro Calzado?"); int numero = Leer.datoInt();
+
+                        String diaVenta;
+                        do{
+                            System.out.println("¿Dia venta (Semana o Fin de semana)?");
+                            diaVenta = Leer.dato(); //semana (7)
+                        }while(diaVenta.compareToIgnoreCase("Semana")!=0 && //false
+                        diaVenta.compareToIgnoreCase("Fin de semana") !=0); //
+
+                        int respuesta;
+                        do{
+                            System.out.println("Favor indicare calzado: 1)Deportivo    2)Formal Hombre    3)Formal Mujer");
+                            System.out.println("Favor ingrese una opción para continuar (1,2 o 3)");
+                            respuesta = Leer.datoInt(); //2
+                        }while(respuesta < 1 || respuesta >3);
+                            // false         || false
+                         if(respuesta==1){
+                             //Deportivo
+                             System.out.println("¿Tipo Deporte?"); String tipoDeporte = Leer.dato();
+
+                             String tipoMaterial;
+                             do{
+                                 System.out.println("¿Tipo Material (Cuero o Lona)?");
+                                 tipoMaterial = Leer.dato(); //semana (7)
+                             }while(tipoMaterial.compareToIgnoreCase("Cuero")!=0 && //false
+                                     tipoMaterial.compareToIgnoreCase("Lona") !=0);
+
+                             Producto producto = new Producto(codigoCalzado,stock,valorBase);
+                             Deportivo deportivo = new Deportivo(producto,diaVenta,numero,tipoDeporte,tipoMaterial);
+
+                             tiendaCalzado.ingresarCalzadoDeportivo(deportivo);
+                             System.out.println("Se registra calzado deportivo correctamente...");
+
+                         }else{
+                             //Formal
+                             System.out.println("¿Color del calzado?"); String color = Leer.dato();
+
+                             if(respuesta==2){
+                                 tiendaCalzado.ingresarCalzadoHombre(new Hombre(new Producto(codigoCalzado,stock,valorBase),diaVenta,numero,color));
+                                 System.out.println("Se registra calzado formal de hombre correctamente...");
+                             }else{
+                                 System.out.println("¿Altura taco?"); int alturaTaco = Leer.datoInt();
+                                 tiendaCalzado.ingresarCalzadoMujer(new Mujer(new Producto(codigoCalzado,stock,valorBase),diaVenta,numero,color,alturaTaco));
+                                 System.out.println("Se registra calzado formal de mujer correctamente...");
+                             }
+                         }
+
+                    }else{
+                        System.out.println("El codigo "+codigoCalzado + "pertenece a un calzado de la tienda..favor revisar..");
+                    }
                     break;
                 case 2:
                     System.out.println(tiendaCalzado.calzadosMujer());

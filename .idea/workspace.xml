@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0e763bf-d478-4f53-a855-95d1e44b8c6d" name="Changes" comment="Se actualiza repo. Se contruye capa de control y se finalizara durante la proxima sesión">
-      <change afterPath="$PROJECT_DIR$/src/vista/App_Smoke_tests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/vista/Leer.java" afterDir="false" />
+    <list default="true" id="f0e763bf-d478-4f53-a855-95d1e44b8c6d" name="Changes" comment="Se actualiza repo. Se finaliza capa de control y se avanza en capa de vista. proxima clase se finaliza proyecto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controlador/TiendaCalzado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controlador/TiendaCalzado.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/vista/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,14 +34,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/domingo.saavedra/Desktop/EjercicioRepasoPrueba2/src/vista"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/domingo.saavedra/Desktop/EjercicioRepasoPrueba2/src/vista&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\domingo.saavedra\Desktop\EjercicioRepasoPrueba2\src\vista" />
@@ -109,13 +106,22 @@
       <option name="project" value="LOCAL" />
       <updated>1732129231875</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Se actualiza repo. Se finaliza capa de control y se avanza en capa de vista. proxima clase se finaliza proyecto">
+      <option name="closed" value="true" />
+      <created>1732215777822</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1732215777822</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Se actualiza repo. Se contruye capa de modelo" />
     <MESSAGE value="Se actualiza repo. Se contruye capa de control y se finalizara durante la proxima sesión" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se actualiza repo. Se contruye capa de control y se finalizara durante la proxima sesión" />
+    <MESSAGE value="Se actualiza repo. Se finaliza capa de control y se avanza en capa de vista. proxima clase se finaliza proyecto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se actualiza repo. Se finaliza capa de control y se avanza en capa de vista. proxima clase se finaliza proyecto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
